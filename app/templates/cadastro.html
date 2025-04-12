@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="..//static/cadastro.css">
+</head>
+<body>
+    <form action="{{url_for('cadastro')}}" method="POST">
+        {{ formulario.csrf_token }}
+        <fieldset>
+            <legend>Dados Pessoais</legend>
+
+            <div>
+                {{formulario.nome.label() }}
+                {{formulario.nome() }}
+                
+            </div>
+            <div>
+                {{formulario.idade.label() }}
+                {{formulario.idade() }}
+            </div>
+            <div>
+                {{formulario.sexo.label() }}
+                {{formulario.sexo() }}                
+            </div>
+                
+        </fieldset>
+
+        <fieldset>
+            <legend>Dados Profissionais</legend>
+
+            <div>
+                {{formulario.matricula.label() }}
+                {{formulario.matricula() }}
+            </div>
+            <div>
+                {{formulario.cargo.label() }}
+                {{formulario.cargo() }}
+            </div>
+            <div>
+                {{formulario.classe.label() }}
+                {{formulario.classe() }}
+            </div>
+
+        </fieldset>
+
+        <fieldset>
+            <legend>Dados de Contato</legend>
+            <div>
+                {{formulario.email.label() }}
+                {{formulario.email() }}
+            </div>
+            <div class="senhas">
+                {{formulario.senha.label() }}
+                {{formulario.senha(class="senha_preenchimento") }}
+                {{formulario.confirmacao_senha.label(class="confirma_senha") }}
+                {{formulario.confirmacao_senha(class="senha_preenchimento") }}
+            </div>
+
+        </fieldset>
+            <div class="botao">
+                {{formulario.btnSubmit() }}
+            </div>
+    </form>
+    
+</body>
+</html>

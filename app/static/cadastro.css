@@ -1,0 +1,40 @@
+body{
+
+    max-width: 800px;
+    margin: auto;
+}
+fieldset{
+   max-width: 800px;
+   padding-top: 1em;
+   margin: auto;
+   margin-top: 2em;
+}
+div{
+    display: flex;
+    margin-bottom: 1em;
+}
+input{
+    width: 100%;
+    margin-left: 5px;
+}
+select{
+    margin-left: 5px;
+    min-width: 50px;
+    width: 150px;
+}
+.botao{
+    display: flexbox;
+    margin-top: 5em;
+    margin-left: 70%;
+    
+}
+.confirma_senha{
+    padding-left: 10%;
+}
+.senhas{
+    display: flexbox;
+    
+}
+.senha_preenchimento{
+    max-width: 30%;
+}
