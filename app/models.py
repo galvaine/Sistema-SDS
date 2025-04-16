@@ -6,7 +6,7 @@ from flask_login import UserMixin
 def load_user(user_id):
     return Cadastro.query.get(user_id)
 
-# Modelo para controle de usuario utilizando o userMixin
+# Modelo do banco de dados de usuario utilizando o userMixin
 # para marca para o flask login que e utilizado como dados de login
 class Cadastro(db.Model, UserMixin):
 # Nome da tabela
@@ -15,7 +15,7 @@ class Cadastro(db.Model, UserMixin):
     # Dados pessoais 
     nome = db.Column(db.String(30), unique=True, nullable=True)
     idade = db.Column(db.Integer)
-    sexo = db.column(db.String(10))
+    sexo = db.Column(db.String(15), nullable=True)
     # Dados proficionais
     matricula = db.Column(db.Integer, unique=True, nullable=True)
     classe = db.Column(db.String(15))

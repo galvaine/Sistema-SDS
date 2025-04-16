@@ -6,6 +6,40 @@
     <title>Relatorio</title>
 </head>
 <body>
-    
+    <fieldset>
+        <div class="relario">
+            <form action="{{ url_for('relatorio') }}" method="post">
+                <div>
+                    {{relatorio.data.label()}}
+                    {{relatorio.data()}}
+                </div>
+                <legend class="legendas">Equipe
+                <div>
+                    {{relatorio.comandante.label()}}
+                    {{relatorio.comandante()}}
+                    {{relatorio.motorista.label()}}
+                    {{relatorio.motorista()}}
+                    {{relatorio.patrulheiro.label()}}
+                    {{relatorio.patrulheiro()}}
+                </div>
+                </legend>
+                <div>
+                    {{relatorio.local.label()}}
+                    {{relatorio.local()}}
+                </div>
+                <div>
+                    {{relatorio.inspetor.label()}}
+                    {{relatorio.inspetor()}}
+                </div>
+                <div>
+                    {{relatorio.relatorio.label()}}
+                    {{relatorio.relatorio(class='text_area')}}
+                </div>
+                <div>
+                    {{relatorio.btnSubimit}}
+                </div>
+            </form>
+        </div>
+    </fieldset>
 </body>
 </html>

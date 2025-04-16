@@ -3,7 +3,7 @@ from app import app
 from flask import Flask ,render_template,redirect, url_for
 from app.models import Cadastro
 from app import db
-from app.form import Cadastroform, Loginform
+from app.form import Cadastroform, Loginform, RelatorioForm
 from flask_login import login_user,logout_user,current_user
 
 # Paginas Inicial
@@ -21,7 +21,14 @@ def index():
 @app.route('/dashboard', methods=['GET'])
 def dashboard():
     nome = current_user.nome.capitalize()
-    return render_template('dashboard.html',nome=nome)
+    email = current_user.email.capitalize()
+    matricula = current_user.matricula
+    sexo = current_user.sexo.capitalize()
+    cargo = current_user.cargo.capitalize()
+    classe = current_user.classe[:-1].capitalize() + current_user.classe[-1].upper()
+    
+    # Verifica se o usuario esta logado
+    return render_template('dashboard.html',nome=nome, email=email, matricula=matricula, sexo=sexo, cargo=cargo, classe=classe)
 
 # Rota para sair 
 @app.route('/logoff')
@@ -33,7 +40,10 @@ def logoff():
 # pagina destinado ao relatorio
 @app.route('/relatorio', methods=['GET', 'POST'])
 def relatorio():
-    return "relatorio"
+    relatorio = RelatorioForm()
+    if relatorio.validate_on_submit():
+        print('deu certo')
+    return render_template('relatorio.html', relatorio=relatorio)
 
 # Rota exclusiva para cadastrar o usuario
 @app.route('/cadastro', methods=['GET', 'POST'])

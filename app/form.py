@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,IntegerField,SelectField,SubmitField,PasswordField,DateField
+from wtforms import StringField,IntegerField,SelectField,SubmitField,PasswordField,DateField,TextAreaField
 from wtforms.validators import DataRequired, Email,EqualTo,ValidationError
+from flask import Flask, render_template,redirect
 
 from app  import db, bcrypt
 from app.models import Cadastro
@@ -48,7 +49,8 @@ class Loginform(FlaskForm):
     email = StringField('Email', validators=[DataRequired(),Email()])
     senha = PasswordField('Senha', validators=[DataRequired()])
     btnSubimit = SubmitField('Login')
-# Função que realiza a busca do email e senha no banco de dados para fazer o login
+
+    # Função que realiza a busca do email e senha no banco de dados para fazer o login
     def login(self):
         # Recuperar o usuario do email do banco de dados
         user = Cadastro.query.filter_by(email=self.email.data).first()
@@ -61,9 +63,16 @@ class Loginform(FlaskForm):
             else:
                 raise Exception('Senha incorreta!!!')
         else:
-            raise Exception('Usuário não encontrado!!!')
+            raise render_template('paginaErro.html')
+            #raise Exception('Usuário não encontrado!!!')
 
 # Formulario de Relatorio
-#class RelatorioForm(FlaskForm):
-#    data = DateField('Data', validators=[DataRequired()])
-    
+class RelatorioForm(FlaskForm):
+    data = DateField('Data', validators=[DataRequired()])
+    comandante = StringField('Comandante', validators=[DataRequired()])
+    motorista = StringField('Motorista', validators=[DataRequired()])
+    patrulheiro = StringField('Patrulheiro')
+    local = StringField('Local', validators=[DataRequired()])
+    inspetor = StringField('Inspetor', validators=[DataRequired()])
+    relatorio = TextAreaField('Relatorio', validators=[DataRequired()])
+    btnSubimit = SubmitField('Enviar')

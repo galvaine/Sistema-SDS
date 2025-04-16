@@ -1,11 +1,23 @@
-a {
+a{
     display: inline-block;
     padding: 10px 20px;
+    background-color: #007bff;
+    text-decoration: none;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+    border-radius: 10px;
+}
+.botoes_centrais{
+    display: inline-block;
+    padding: 30px 40px;
     background-color: #007bff;
     color: white;
     text-decoration: none;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     text-align: center;
     font-size: 16px;
     cursor: pointer;
@@ -13,4 +25,16 @@ a {
 
 a:hover {
     background-color: #0056b3;
+}
+.conteiner{
+    display: flex;
+    margin-top:100px;
+    margin-bottom: 100px;
+    flex-wrap: wrap;
+    justify-self: center;
+    align-items: center;
+    border-radius: 10px;
+    gap: 10px;
+    
+
 }

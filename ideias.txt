@@ -7,4 +7,5 @@ cria uma forma de gerencaiamento de contas
 Criar uma forma de abilitar e desabilitar a alteração de dados
 
 Criar o relatorio 
-Criar uma forma de envio e armazenamento do relatorio 
+Criar uma forma de envio e armazenamento do relatorio
+como tambem o envio de pdf 
