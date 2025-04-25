@@ -1,4 +1,1 @@
-{
-    "routes": [{ "src": "/(.*)", "dest": "/Sistema SDS/main.py" }
-    ]
-}
+{ "rewrites": [{ "source": "/(.*)", "destination": "/" }] }
