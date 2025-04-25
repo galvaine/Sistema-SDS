@@ -14,7 +14,7 @@ class Cadastro(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     # Dados pessoais 
     nome = db.Column(db.String(30), unique=True, nullable=True)
-    idade = db.Column(db.Integer)
+    idade = db.Column(db.String(20))
     sexo = db.Column(db.String(15), nullable=True)
     # Dados proficionais
     matricula = db.Column(db.Integer, unique=True, nullable=True)
@@ -22,4 +22,4 @@ class Cadastro(db.Model, UserMixin):
     cargo = db.Column(db.String(15))
     # Dados de login
     email = db.Column(db.String,  nullable=True)
-    senha = db.Column(db.String, nullable = True)
+    senha = db.Column(db.LargeBinary, nullable = True)

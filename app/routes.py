@@ -14,8 +14,8 @@ def index():
         usuario = fomulario_login.login()
         login_user(usuario,remember=True)
         return redirect(url_for('dashboard'))
-    
-    return render_template('index.html',fomulario_login=fomulario_login)
+    else:   
+        return render_template('index.html',fomulario_login=fomulario_login)
 
 # Rota para a Dashboard do usuario
 @app.route('/dashboard', methods=['GET'])

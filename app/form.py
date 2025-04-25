@@ -14,7 +14,10 @@ class Cadastroform(FlaskForm):
     sexo = SelectField('Sexo',choices=[('masculino', 'Masculino'),('feminino', 'Feminino')],validators=[DataRequired()])
     # Dados proficionais
     matricula = IntegerField('Matricula',validators=[DataRequired()])
-    classe = SelectField('Classe',choices=[('classe I','Classe III'),('classe II','Classe II'),('classe I', 'Classe I')],validators=[DataRequired()])
+    classe = SelectField('Classe',choices=[
+        ('classe III','Classe III'),
+        ('classe II','Classe II'),
+        ('classe I', 'Classe I')],validators=[DataRequired()])
     cargo = SelectField('Cargo',choices=[('guarda', 'Guarda'),('comandante','Comandante'),('subcomandante', 'Subcomandante')],validators=[DataRequired()])
     # Dados de login
     email = StringField('Email',validators=[DataRequired(),Email()])
@@ -24,9 +27,9 @@ class Cadastroform(FlaskForm):
     btnSubmit = SubmitField('Cadastrar')
     
     # Função para validar o email com unico
-    def validade_email(self, email):
-        if Cadastro.query.filter(email=email.data).first():
-            return ValidationError('Usuario cadastrado')
+    #def validate_email(self, email):
+    #    if Cadastro.query.filter(email=email.data).first():
+    #        raise ValidationError('Usuario cadastrado')
         
     def save(self):
         senha = bcrypt.generate_password_hash(self.senha.data.encode('utf-8'))
@@ -62,9 +65,7 @@ class Loginform(FlaskForm):
                 return user
             else:
                 raise Exception('Senha incorreta!!!')
-        else:
-            raise render_template('paginaErro.html')
-            #raise Exception('Usuário não encontrado!!!')
+
 
 # Formulario de Relatorio
 class RelatorioForm(FlaskForm):
@@ -75,4 +76,4 @@ class RelatorioForm(FlaskForm):
     local = StringField('Local', validators=[DataRequired()])
     inspetor = StringField('Inspetor', validators=[DataRequired()])
     relatorio = TextAreaField('Relatorio', validators=[DataRequired()])
-    btnSubimit = SubmitField('Enviar')
+    btnSubmit = SubmitField('Enviar')
