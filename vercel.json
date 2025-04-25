@@ -1,6 +1,4 @@
 {
-
-    "routes": [
-      { "src": "/(.*)", "dest": "/Sistema SDS/main.py" }
+    "routes": [{ "src": "/(.*)", "dest": "/Sistema SDS/main.py" }
     ]
-  }
+}
