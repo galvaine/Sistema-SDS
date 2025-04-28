@@ -1,6 +1,7 @@
 #Importação da construção do aplicativo flask
 from app import app
 from app import db
+import os
 
 
 

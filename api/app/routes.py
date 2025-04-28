@@ -15,7 +15,7 @@ def index():
         login_user(usuario,remember=True)
         return redirect(url_for('dashboard'))
     else:   
-        return render_template(url_for('/SistemaSDS/templates/index.html'),fomulario_login=fomulario_login)
+        return render_template('index.html',fomulario_login=fomulario_login)
 
 # Rota para a Dashboard do usuario
 @app.route('/dashboard', methods=['GET'])
