@@ -1,1 +1,4 @@
-{ "routes": [{ "source": "/api(.*)", "destination": "/api/app/routes.py" }] }
+{ 
+    "routes": [
+    { "src": "/api(.*)", "dest": "/api/app/routes.py" }
+    ] }
