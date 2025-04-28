@@ -1,4 +1,6 @@
-{ 
+{
     "routes": [
-    { "src": "/(.*)", "dest": "/api/app/templates/index.html" }
-    ] }
+      { "handle": "filesystem" },
+      { "src": "/.*", "dest": "/index.html" }
+    ]
+  }  
