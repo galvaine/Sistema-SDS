@@ -1,6 +1,5 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
 
@@ -21,11 +20,6 @@ lm.init_app(app)
 lm.login_view ='login'
 bcrypt = Bcrypt(app)
 
-
-
-
-# Configurando o Migrate
-migrate = Migrate(app, db)
 
 # Importação das rotas sempres posterior a criação do aplicativo 
 from app.routes import index
