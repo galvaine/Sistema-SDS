@@ -3,8 +3,8 @@ from app import app
 from app import db
 import sys
 import os
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
 
 if __name__ == '__main__':
