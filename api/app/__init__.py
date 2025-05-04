@@ -14,7 +14,7 @@ import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 import tempfile
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(tempfile.gettempdir(), 'app.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:eNFmCW3zb4oxZY98@joylessly-sinewy-flatfish.data-1.use1.tembo.io:5432/postgres'
 app.config['SECRET_KEY'] = '12456389'
 db = SQLAlchemy(app)
 
