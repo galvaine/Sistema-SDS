@@ -1,3 +1,3 @@
-from api.app import app as application
+from api.app import app
 
 with app.app_context():
