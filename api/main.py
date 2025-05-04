@@ -1,4 +1,5 @@
 from api.app import app, db
+import os
 import sys
 sys.path.append('/caminho/para/seu/modulo')
 
