@@ -14,7 +14,6 @@ app.config['SECRET_KEY'] = '12456389'
 db = SQLAlchemy(app)
 
 # Configurando o flask login
-#app.secret_key='12456389'
 lm = LoginManager()
 lm.init_app(app)
 lm.login_view ='login'
@@ -22,9 +21,10 @@ bcrypt = Bcrypt(app)
 
 
 # Importação das rotas sempres posterior a criação do aplicativo 
-from app.routes import index
-from app.routes import dashboard
-from app.routes import cadastro
+from api.app.routes import index
+from api.app.routes import dashboard
+from api.app.routes import cadastro
+from api.app.models import Cadastro
 
 # importando o banco de Dados
-from app.models import Cadastro
+from api.app.models import Cadastro
