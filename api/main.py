@@ -1,4 +1,6 @@
 from app import app, db
+import sys
+sys.path.append('/caminho/para/seu/modulo')
 
 with app.app_context():
     db.create_all()
