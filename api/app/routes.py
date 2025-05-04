@@ -1,9 +1,9 @@
 # Importação da construção do aplicativo para o arquivo rota
-from app import app
+from api.app import app
 from flask import Flask ,render_template,redirect, url_for
-from app.models import Cadastro
-from app import db
-from app.form import Cadastroform, Loginform, RelatorioForm
+from api.app.models import Cadastro
+from api.app import db
+from api.app.form import Cadastroform, Loginform, RelatorioForm
 from flask_login import login_user,logout_user,current_user
 
 # Paginas Inicial
