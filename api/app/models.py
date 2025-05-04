@@ -1,4 +1,4 @@
-from app import db, lm
+from api.app import db, lm
 from flask_login import UserMixin
 
 #função para controle de login
