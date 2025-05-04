@@ -3,8 +3,8 @@ from wtforms import StringField,IntegerField,SelectField,SubmitField,PasswordFie
 from wtforms.validators import DataRequired, Email,EqualTo,ValidationError
 from flask import Flask, render_template,redirect
 
-from app  import db, bcrypt
-from app.models import Cadastro
+from api.app  import db, bcrypt
+from api.app.models import Cadastro
 
 #  Formulario de cadastro
 class Cadastroform(FlaskForm):
