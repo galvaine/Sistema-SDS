@@ -9,7 +9,10 @@ from flask_bcrypt import Bcrypt
 app = Flask(__name__)
 
 # Criando e configurando o banco de dados
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:eNFmCW3zb4oxZY98@joylessly-sinewy-flatfish.data-1.use1.tembo.io:5432/postgres"
+import os
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(basedir, 'app.db')}"
 app.config['SECRET_KEY'] = '12456389'
 db = SQLAlchemy(app)
 
