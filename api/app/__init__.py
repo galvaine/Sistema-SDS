@@ -12,7 +12,9 @@ app = Flask(__name__)
 import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(basedir, 'app.db')}"
+import tempfile
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(tempfile.gettempdir(), 'app.db')
 app.config['SECRET_KEY'] = '12456389'
 db = SQLAlchemy(app)
 
