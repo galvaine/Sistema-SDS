@@ -1,7 +1,9 @@
 #Importação da construção do aplicativo flask
-import app
+from app import app
 from app import db
-
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 
 
