@@ -12,7 +12,9 @@ app = Flask(__name__)
 
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:eNFmCW3zb4oxZY98@joylessly-sinewy-flatfish.data-1.use1.tembo.io:5432/postgres'
+import tempfile
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(tempfile.gettempdir(), 'app.db')
 app.config['SECRET_KEY'] = '12456389'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
