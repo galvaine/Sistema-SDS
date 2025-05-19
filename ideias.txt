@@ -1,11 +1,15 @@
 Criar o login - ok
-Criar a pagina de usuario
+Criar a pagina de usuario - ok
 Criar a aba de dados e alteralos
 
 Criar o login de admin
-cria uma forma de gerencaiamento de contas
+cria uma forma de gerenciamento de contas
 Criar uma forma de abilitar e desabilitar a alteração de dados
 
-Criar o relatorio 
+Criar o relatorio - ok
 Criar uma forma de envio e armazenamento do relatorio
-como tambem o envio de pdf 
+
+sistema de permuta
+seleção se subistituto
+evitar que se faça uma permuta com solicitante e subistituto com o mesmo nome 
+organização e apresentação da tabela de permuta

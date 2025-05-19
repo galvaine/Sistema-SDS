@@ -1,9 +1,9 @@
 # Importação da construção do aplicativo para o arquivo rota
-from api.app import app
-from flask import Flask ,render_template,redirect, url_for
-from api.app.models import Cadastro
-from api.app import db
-from api.app.form import Cadastroform, Loginform, RelatorioForm
+from app import app
+from flask import Flask ,render_template,redirect, url_for,request
+from app.models import Cadastro, Permuta
+from app import db
+from app.form import Cadastroform, Loginform, RelatorioForm, PermutaForm
 from flask_login import login_user,logout_user,current_user
 
 # Paginas Inicial
@@ -42,15 +42,41 @@ def logoff():
 def relatorio():
     relatorio = RelatorioForm()
     if relatorio.validate_on_submit():
-        print('deu certo')
+        pass
     return render_template('relatorio.html', relatorio=relatorio)
+
+# Rota para a pagina e cadastro de permutas
+@app.route('/permuta', methods = ['GET', 'POST'])
+def permuta():
+    # Pega os dados do formulario de permuta
+    formulario_permuta = PermutaForm()
+    # Verifica se os Dados do formualrio foram validados
+    if request.method == 'POST' and formulario_permuta.validate_on_submit():
+        nova_permuta = formulario_permuta.save()
+        return redirect(url_for('dashboard'))
+    if formulario_permuta.errors:
+        return "Erro a cadastrar a permuta"
+
+    return render_template('permuta.html', formulario_permuta=formulario_permuta)
+    
+    
 
 # Rota exclusiva para cadastrar o usuario
 @app.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
     formulario = Cadastroform()
-    if formulario.validate_on_submit():
+    if request.method == 'POST' and formulario.validate_on_submit():
         novo_usuario = formulario.save()
         login_user(novo_usuario, remember=True)
         return redirect (url_for('dashboard'))
     return render_template('cadastro.html',formulario=formulario)
+
+@app.route('/historicopermuta', methods=['GET'])
+def historico_permuta():
+    current_user_nome = current_user.nome
+    historico_nome = Permuta.query.filter_by(solicitante=current_user_nome).first()
+    if historico_nome and historico_nome.substituto:
+        historico = Permuta.query.all()
+    else:
+        historico = 0
+    return render_template('historico_permuta.html', historico=historico)

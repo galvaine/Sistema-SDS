@@ -1,0 +1,78 @@
+@import url('https://fonts.cdnfonts.com/css/rawline');
+
+body{
+    font-family: 'rawline', 'Rawline', 'serif';
+    max-width:  500px;
+    margin: auto;
+
+}
+fieldset{
+    border-radius: 20px;
+    max-width: 500px;
+    margin: auto;
+    padding-bottom: 20px;
+}
+legend{
+    border: solid white;
+    background-color: white;
+    padding: 15px;
+    border-radius:  20px;
+    margin: auto;
+}
+
+div{
+    display: flex;
+    flex-direction: column;
+}
+.horarios{
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+    gap: 5px;
+
+}
+.botoes{
+    display: flex;
+    text-align: center;
+    justify-items: center;
+    flex-direction: row;
+}
+a{
+    font-family: arial;
+    text-decoration: none;
+    display: flex;
+    flex: 1;
+    padding: 15px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 12.8px;
+    cursor: pointer;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 20px;
+}
+
+.botao{
+    font-family: arial;
+    display: flex;
+    display: 1;
+    padding: 15px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 12.8px;
+    cursor: pointer;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}

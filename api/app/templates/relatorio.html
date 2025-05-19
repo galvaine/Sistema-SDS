@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relatorio</title>
+    <title>Formulario de Relatorio</title>
 </head>
 <body>
     <fieldset>
+        <legend><b>Relatório do Dia</b></legend>
         <div class="relario">
             <form action="{{ url_for('relatorio') }}" method="post">
                 <div>
@@ -36,7 +37,7 @@
                     {{relatorio.relatorio(class='text_area')}}
                 </div>
                 <div>
-                    {{relatorio.btnSubimit}}
+                    {{relatorio.btnSubmit}}
                 </div>
             </form>
         </div>

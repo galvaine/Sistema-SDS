@@ -1,0 +1,31 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #005A9E; /* Azul Microsoft mais escuro */
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #0078D4; /* Azul Microsoft */
+    color: white;
+}
+
+tr:nth-child(odd) {
+    background-color: #E6F0FA; /* Azul claro para contraste */
+}
+
+tr:hover {
+    background-color: #005A9E; /* Azul Microsoft mais escuro ao passar o mouse */
+    color: white;
+    cursor: pointer;
+}

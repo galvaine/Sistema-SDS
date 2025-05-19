@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',  filename = 'permuta.css')}}">
+    <title>Formulario de Permuta</title>
+</head>
+<body>
+    <fieldset> 
+        <legend><b>Solicitação de Permuta</b></legend>
+        <div class="permuta" >
+            <form action="{{ url_for('permuta') }}" method="post">
+                {{ formulario_permuta.csrf_token }}
+                <div>
+                    {{formulario_permuta.data_solicitacao.label()}}
+                    {{formulario_permuta.data_solicitacao()}}
+                </div>
+                <div>
+                    {{formulario_permuta.local_servico.label()}}
+                    {{formulario_permuta.local_servico()}}
+                </div>
+                <div class="horarios">
+                    {{formulario_permuta.horario_inicio.label()}}
+                    {{formulario_permuta.horario_inicio()}}
+                    {{formulario_permuta.horario_termino.label()}}
+                    {{formulario_permuta.horario_termino()}}
+                </div>
+                <div>
+                    {{formulario_permuta.substituto.label()}}
+                    {{formulario_permuta.substituto()}}
+                </div>
+                <div>
+                    
+                </div>
+                </fieldset>
+                <div class="botoes">
+                    <a href="{{ url_for('dashboard') }}">Inicio</a>
+                    {{formulario_permuta.btnSubmit(class='botao')}}
+                    <a href="{{ url_for('historico_permuta') }}">Historico</a>
+                </div>
+            </form>
+        </div>
+    <label for="">{{solicitante}}</label>
+    
+    
+
+</body>
+</html>

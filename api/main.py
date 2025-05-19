@@ -1,9 +1,8 @@
-from api.app import app, db
-import os
-import sys
-sys.path.append('/caminho/para/seu/modulo')
+from app import app, db
 
-with app.app_context():
-    db.create_all()
+if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
+    app.run(debug=True)
 
-application = app  # Vercel exige que o app seja chamado 'application'
+

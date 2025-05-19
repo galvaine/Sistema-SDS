@@ -15,7 +15,7 @@ body{
 /* Painel da esquerda com fundo escuro e imagem de fundo */
 .left-panel{
     flex: 2;/* Ocupa 2/3 da largura da tela */
-    background: url("../static/logo_maior.png") no-repeat center;
+    background: url("../static/imagens/logo_maior.png") no-repeat center;
     background-size: cover;
     background-color: #000;
 }

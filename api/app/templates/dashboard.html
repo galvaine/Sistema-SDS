@@ -8,13 +8,14 @@
 </head>
 <body>
     <div class="titulo">
-        <h1>Olá {{nome}}</h1>
+        <h1>GCM {{nome}}</h1>
     </div>
+    <div class="logo"></div>
     </div>
     <div class="conteiner">
         <a class="botoes_centrais" href="{{url_for('relatorio')}}">Relatorio</a>
-        <a class="botoes_centrais" href="{{url_for('relatorio')}}">Permuta</a>
-        <a class="botoes_centrais" href="{{url_for('relatorio')}}">exemplo 3</a>
+        <a class="botoes_centrais" href="{{url_for('permuta')}}">Solicitação de Permuta</a>
+        <a class="botoes_centrais" href="{{url_for('historico_permuta')}}">Historico de Permuta</a>
         <a class="botoes_centrais" href="{{url_for('relatorio')}}">exemplo 4</a>
     </div>
     <a href="{{url_for('logoff')}}">Sair</a>

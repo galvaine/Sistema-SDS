@@ -1,10 +1,10 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,IntegerField,SelectField,SubmitField,PasswordField,DateField,TextAreaField
+from wtforms import StringField,IntegerField,SelectField,SubmitField,PasswordField,DateField,TextAreaField,TimeField
 from wtforms.validators import DataRequired, Email,EqualTo,ValidationError
-from flask import Flask, render_template,redirect
+from flask_login import current_user
 
-from api.app  import db, bcrypt
-from api.app.models import Cadastro
+from app  import db, bcrypt
+from app.models import Cadastro, Permuta
 
 #  Formulario de cadastro
 class Cadastroform(FlaskForm):
@@ -66,7 +66,6 @@ class Loginform(FlaskForm):
             else:
                 raise Exception('Senha incorreta!!!')
 
-
 # Formulario de Relatorio
 class RelatorioForm(FlaskForm):
     data = DateField('Data', validators=[DataRequired()])
@@ -77,3 +76,29 @@ class RelatorioForm(FlaskForm):
     inspetor = StringField('Inspetor', validators=[DataRequired()])
     relatorio = TextAreaField('Relatorio', validators=[DataRequired()])
     btnSubmit = SubmitField('Enviar')
+
+# Formulario de Permuta
+class PermutaForm(FlaskForm):
+    data_solicitacao = DateField('Data da Solicitação',validators=[DataRequired()])
+    solicitante = StringField('Solicitante', default= lambda: current_user.nome, validators=[DataRequired()])
+    local_servico = StringField('Local de Serviço', validators=[DataRequired()])
+    horario_inicio = TimeField('Data e Hora de Inicio', validators=[DataRequired()])
+    horario_termino = TimeField('Data e Hora de Termino', validators=[DataRequired()])
+    substituto = StringField('Subistituto',validators=[DataRequired()])
+    btnSubmit = SubmitField('Enviar')
+
+    def save(self):
+        formata_data = str(self.data_solicitacao.data.strftime('%d/%m/%Y'))
+        formata_horario_inicio = str(self.horario_inicio.data.strftime('%H:%M'))
+        formata_horario_termino = str(self.horario_termino.data.strftime('%H:%M'))
+        nova_permuta = Permuta(
+            data_solicitacao = formata_data,
+            solicitante = self.solicitante.data,
+            local_servico = self.local_servico.data,
+            horario_inicio = formata_horario_inicio,
+            horario_termino = formata_horario_termino,
+            substituto = self.substituto.data
+        )
+        db.session.add(nova_permuta)
+        db.session.commit()
+        return 'ok'
