@@ -5,6 +5,7 @@ from app.models import Cadastro, Permuta
 from app import db
 from app.form import Cadastroform, Loginform, RelatorioForm, PermutaForm
 from flask_login import login_user,logout_user,current_user
+from datetime import datetime
 
 # Paginas Inicial
 @app.route('/', methods=['GET','POST'])
@@ -21,14 +22,11 @@ def index():
 @app.route('/dashboard', methods=['GET'])
 def dashboard():
     nome = current_user.nome.capitalize()
-    email = current_user.email.capitalize()
-    matricula = current_user.matricula
-    sexo = current_user.sexo.capitalize()
-    cargo = current_user.cargo.capitalize()
-    classe = current_user.classe[:-1].capitalize() + current_user.classe[-1].upper()
     
+    mensagem = "teste de mensagem"
+
     # Verifica se o usuario esta logado
-    return render_template('dashboard.html',nome=nome, email=email, matricula=matricula, sexo=sexo, cargo=cargo, classe=classe)
+    return render_template('dashboard.html',nome=nome, mensagem=mensagem)
 
 # Rota para sair 
 @app.route('/logoff')
@@ -50,6 +48,8 @@ def relatorio():
 def permuta():
     # Pega os dados do formulario de permuta
     formulario_permuta = PermutaForm()
+    print(formulario_permuta.data_solicitacao.data)
+    print(formulario_permuta.solicitante.data)
     # Verifica se os Dados do formualrio foram validados
     if request.method == 'POST' and formulario_permuta.validate_on_submit():
         nova_permuta = formulario_permuta.save()
@@ -71,12 +71,18 @@ def cadastro():
         return redirect (url_for('dashboard'))
     return render_template('cadastro.html',formulario=formulario)
 
+# Rota para o historico de permutas
 @app.route('/historicopermuta', methods=['GET'])
 def historico_permuta():
+    # Pega o usuario logado
     current_user_nome = current_user.nome
+    # Realiza a busca no banco de dados das permutas do usuario logado
     historico_nome = Permuta.query.filter_by(solicitante=current_user_nome).first()
+    # Verifica se o usuario ja fez alguma permuta
     if historico_nome and historico_nome.substituto:
+        # Se ja fez permuta traz todo o historico
         historico = Permuta.query.all()
     else:
+        # Se nao fez permuta traz o valor 0
         historico = 0
     return render_template('historico_permuta.html', historico=historico)

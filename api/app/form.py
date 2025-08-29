@@ -5,6 +5,7 @@ from flask_login import current_user
 
 from app  import db, bcrypt
 from app.models import Cadastro, Permuta
+from datetime import datetime
 
 #  Formulario de cadastro
 class Cadastroform(FlaskForm):
@@ -79,8 +80,9 @@ class RelatorioForm(FlaskForm):
 
 # Formulario de Permuta
 class PermutaForm(FlaskForm):
-    data_solicitacao = DateField('Data da Solicitação',validators=[DataRequired()])
+    data_solicitacao = StringField('Data da Solicitação',default= lambda: datetime.now().strftime('%d/%m/%Y'))
     solicitante = StringField('Solicitante', default= lambda: current_user.nome, validators=[DataRequired()])
+    data_da_permuta = DateField('Data da Permuta',validators=[DataRequired()])
     local_servico = StringField('Local de Serviço', validators=[DataRequired()])
     horario_inicio = TimeField('Data e Hora de Inicio', validators=[DataRequired()])
     horario_termino = TimeField('Data e Hora de Termino', validators=[DataRequired()])
@@ -88,12 +90,13 @@ class PermutaForm(FlaskForm):
     btnSubmit = SubmitField('Enviar')
 
     def save(self):
-        formata_data = str(self.data_solicitacao.data.strftime('%d/%m/%Y'))
+        formata_data_da_permuta = str(self.data_da_permuta.data.strftime('%d/%m/%Y'))
         formata_horario_inicio = str(self.horario_inicio.data.strftime('%H:%M'))
         formata_horario_termino = str(self.horario_termino.data.strftime('%H:%M'))
         nova_permuta = Permuta(
-            data_solicitacao = formata_data,
+            data_solicitacao = self.data_solicitacao.data,
             solicitante = self.solicitante.data,
+            data_da_permuta = formata_data_da_permuta,
             local_servico = self.local_servico.data,
             horario_inicio = formata_horario_inicio,
             horario_termino = formata_horario_termino,

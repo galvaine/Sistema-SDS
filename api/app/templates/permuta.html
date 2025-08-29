@@ -13,8 +13,8 @@
             <form action="{{ url_for('permuta') }}" method="post">
                 {{ formulario_permuta.csrf_token }}
                 <div>
-                    {{formulario_permuta.data_solicitacao.label()}}
-                    {{formulario_permuta.data_solicitacao()}}
+                    {{formulario_permuta.data_da_permuta.label()}}
+                    {{formulario_permuta.data_da_permuta()}}
                 </div>
                 <div>
                     {{formulario_permuta.local_servico.label()}}

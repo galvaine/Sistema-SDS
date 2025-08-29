@@ -30,9 +30,10 @@ class Permuta(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     data_solicitacao = db.Column(db.String(20), nullable=True)
     solicitante = db.Column(db.String(30), nullable=True)
+    data_da_permuta = db.Column(db.String(20), nullable=True)
     local_servico = db.Column(db.String(30), nullable=True)
     horario_inicio = db.Column(db.String(20), nullable=True)
     horario_termino = db.Column(db.String(20), nullable=True)
     substituto = db.Column(db.String(30), nullable=True)
-    altorizacao = db.Column(db.Integer, default=0)
+    autorizacao = db.Column(db.Integer, default=0)
     

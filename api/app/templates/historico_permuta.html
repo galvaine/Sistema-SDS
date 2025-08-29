@@ -16,6 +16,7 @@
                     <th>Substituto</th>
                     <th>Data da Solicitação</th>
                     <th>Local do Serviço</th>
+                    <th>Data da Permuta</th>
                     <th>Horário de Início</th>
                     <th>Horário de Término</th>
                     <th>Status</th>
@@ -30,20 +31,22 @@
                             <td>Gcm {{permuta.substituto.capitalize()}}</td>
                             <td>{{permuta.data_solicitacao}}</td>
                             <td>{{permuta.local_servico.capitalize()}}</td>
+                            <td>{{permuta.data_da_permuta}}</td>
                             <td>{{permuta.horario_inicio}}</td>
                             <td>{{permuta.horario_termino}}</td>
-                                {% if permuta.altorizacao == 0 %}
-                                    <td>Aguardando Autorização</td>
-                                {% elif permuta.altorizacao == 1 %}
-                                    <td>Deferido</td>
-                                {% endif %}
+                            {% if permuta.autorizacao == 0 %}
+                                <td>Aguardando Autorização</td>
+                            {% elif permuta.autorizacao == 1 %}
+                                <td>Deferido</td>
+                            {% endif %}
+                            
                             
                         </tr>
                     {% endfor %}
                 {% else %}
-                    <tr>
-                        <td colspan="7">Nenhuma permuta solicitada</td>
-                    </tr>
+                        <tr>
+                            <td colspan="7">Nenhuma permuta solicitada</td>
+                        </tr>
                 {% endif %}
             </tbody>
         </table>

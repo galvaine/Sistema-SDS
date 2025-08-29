@@ -1,0 +1,78 @@
+/* ===== Estilo Geral ===== */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff;
+    color: #333;
+    padding: 20px;
+}
+
+/* ===== Fieldset e Legend ===== */
+fieldset {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    background-color: #fafafa;
+}
+
+legend {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0 10px;
+    color: #333;
+}
+
+/* ===== Labels ===== */
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* ===== Inputs e Textarea ===== */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+textarea.text_area {
+    height: 100px;
+    resize: vertical;
+}
+
+/* ===== Organização em Linha (para Equipe, Telefone etc.) ===== */
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.form-row input {
+    flex: 1;
+}
+
+/* ===== Botão ===== */
+input[type="submit"], button {
+    margin-top: 20px;
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+input[type="submit"]:hover, button:hover {
+    background-color: #666;
+}
