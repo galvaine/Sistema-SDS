@@ -13,3 +13,30 @@ sistema de permuta
 seleção se subistituto
 evitar que se faça uma permuta com solicitante e subistituto com o mesmo nome 
 organização e apresentação da tabela de permuta
+
+
+
+vercel.json
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/main.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "api/main.py"
+    }
+  ]
+}
+
+main.py
+from app import app, db
+
+if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
+    app.run(debug=True)
