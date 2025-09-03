@@ -1,2 +1,3 @@
-./api/main.py
-./api/venv
+main.py
+venv
+ideias.txt
