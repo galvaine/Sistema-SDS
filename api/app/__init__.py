@@ -39,4 +39,4 @@ from api.app.routes import permuta
 from api.app.routes import logoff
 
 # importando o banco de Dados
-from app.models import Cadastro
+from api.app.models import Cadastro
