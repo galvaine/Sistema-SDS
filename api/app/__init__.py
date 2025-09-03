@@ -23,8 +23,8 @@ def create_app():
 
     # Importações internas (dentro do contexto da app)
     with app.app_context():
-        from app.routes import index, dashboard, cadastro, relatorio, permuta, logoff
-        from app.models import Cadastro
+        from api.app.routes import index, dashboard, cadastro, relatorio, permuta, logoff
+        from api.app.models import Cadastro
         db.create_all()
 
     return app
