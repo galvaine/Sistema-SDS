@@ -3,8 +3,8 @@ from wtforms import StringField,IntegerField,SelectField,SubmitField,PasswordFie
 from wtforms.validators import DataRequired, Email,EqualTo,ValidationError
 from flask_login import current_user
 
-from app  import db, bcrypt
-from app.models import Cadastro, Permuta
+from api.app  import db, bcrypt
+from api.app.models import Cadastro, Permuta
 from datetime import datetime
 
 #  Formulario de cadastro
