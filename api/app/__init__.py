@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 import tempfile
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://banco_de_dados_b48p_user:Yl8ZQzB0wzgO4408RTFx791bviJbuLq7@dpg-d2s6ihfdiees73bd70ag-a/banco_de_dados_b48p'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:WyOXFVaYNLCf0pXt@db.fsnjmvfbkemdsrxolpgd.supabase.co:5432/postgres'
 app.config['SECRET_KEY'] = '12456389'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
