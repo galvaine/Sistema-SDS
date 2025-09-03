@@ -1,5 +1,5 @@
 # Importação da construção do aplicativo para o arquivo rota
-from api.app import app
+from app import app
 from flask import Flask ,render_template,redirect, url_for,request
 from api.app.models import Cadastro, Permuta
 from api.app import db
