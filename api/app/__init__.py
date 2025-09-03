@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
+import psycopg2
 
 
 
@@ -14,7 +15,7 @@ app = Flask(__name__)
 
 import tempfile
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:WyOXFVaYNLCf0pXt@db.fsnjmvfbkemdsrxolpgd.supabase.co:5432/postgres'
 app.config['SECRET_KEY'] = '12456389'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 

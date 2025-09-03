@@ -37,3 +37,8 @@ class Permuta(db.Model):
     substituto = db.Column(db.String(30), nullable=True)
     autorizacao = db.Column(db.Integer, default=0)
     
+"""class Relatorio(db.Model):
+    __tablenome__ = 'relatorios'
+    id = db.Column(db.Integer, primary_key=True)
+    data = db.Column(db.Data, numlable=True)
+"""
