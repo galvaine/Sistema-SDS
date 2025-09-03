@@ -2,41 +2,29 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
-import psycopg2
 
-
-
-# Criação do aplicativo Flask
-app = Flask(__name__)
-
-# Criando e configurando o banco de dados
-
-
-
-import tempfile
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:WyOXFVaYNLCf0pXt@db.fsnjmvfbkemdsrxolpgd.supabase.co:5432/postgres'
-app.config['SECRET_KEY'] = '12456389'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-db = SQLAlchemy(app)
-
-
-
-# Configurando o flask login
+db = SQLAlchemy()
 lm = LoginManager()
-lm.init_app(app)
-lm.login_view ='login'
-bcrypt = Bcrypt(app)
+bcrypt = Bcrypt()
 
+def create_app():
+    app = Flask(__name__)
 
-# Importação das rotas sempres posterior a criação do aplicativo 
-from app.routes import index
-from app.routes import dashboard
-from app.routes import cadastro
-from app.routes import relatorio
-from app.routes import permuta
-from app.routes import logoff
+    # Configurações
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:WyOXFVaYNLCf0pXt@db.fsnjmvfbkemdsrxolpgd.supabase.co:5432/postgres'
+    app.config['SECRET_KEY'] = '12456389'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# importando o banco de Dados
-from app.models import Cadastro
+    # Inicialização dos módulos
+    db.init_app(app)
+    lm.init_app(app)
+    lm.login_view = 'login'
+    bcrypt.init_app(app)
+
+    # Importações internas (dentro do contexto da app)
+    with app.app_context():
+        from app.routes import index, dashboard, cadastro, relatorio, permuta, logoff
+        from app.models import Cadastro
+        db.create_all()
+
+    return app

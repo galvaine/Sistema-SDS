@@ -1,8 +1,3 @@
-from app import app, db
+from app import create_app
 
-# Cria as tabelas ao importar (opcional, dependendo do seu fluxo)
-with app.app_context():
-    db.create_all()
-
-# Vercel precisa encontrar essa variável
-app = app
+app = create_app()
